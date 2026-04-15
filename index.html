@@ -598,18 +598,24 @@ document.getElementById('mlaForm').addEventListener('submit', function (e) {
     submitted_at:    new Date().toISOString(),
   };
 
-  console.log('Submission payload:', payload);
+  const submitBtn = document.getElementById('submitBtn');
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Submitting…';
 
-  // ── TO CONNECT TO GOOGLE SHEETS: ─────────────────────────────────────────
-  // fetch("YOUR_APPS_SCRIPT_WEB_APP_URL", {
-  //   method: "POST",
-  //   body: JSON.stringify(payload)
-  // });
-  // ─────────────────────────────────────────────────────────────────────────
-
-  document.getElementById('successBanner').classList.add('visible');
-  document.getElementById('mlaForm').style.display = 'none';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  fetch("https://script.google.com/macros/s/AKfycbxs7JrpNzc7KmkkIusMu0tdu2vCyDPmaOIWqOsJQHg_9f4ikrMboLkKnLddOCwvC1DCXw/exec", {
+    method: "POST",
+    body: JSON.stringify(payload)
+  })
+  .then(function() {
+    document.getElementById('successBanner').classList.add('visible');
+    document.getElementById('mlaForm').style.display = 'none';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  })
+  .catch(function() {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Submit Response';
+    alert('Something went wrong — please try submitting again.');
+  });
 });
 </script>
 </body>
