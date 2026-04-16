@@ -62,9 +62,18 @@
   .wm-header p {
     font-size: 15px;
     color: var(--muted);
-    max-width: 520px;
-    margin: 0 auto;
     line-height: 1.75;
+    text-align: left;
+    margin: 0 0 0;
+  }
+
+  .wm-header p.mla-role {
+    font-size: 15px;
+    color: var(--accent) !important;
+    font-weight: 600;
+    line-height: 1.75;
+    text-align: left;
+    margin: 0 0 14px;
   }
 
   .divider {
@@ -222,6 +231,58 @@
     border-radius: 20px;
     margin-left: 8px;
     vertical-align: middle;
+  }
+
+  /* ── MESSAGE GUIDANCE ── */
+  .message-guidance {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.75;
+  }
+
+  .message-guidance p {
+    margin-bottom: 10px;
+  }
+
+  .message-guidance ul {
+    padding-left: 20px;
+    margin-bottom: 6px;
+  }
+
+  .message-guidance > ul > li {
+    margin-bottom: 6px;
+  }
+
+  .message-guidance ul ul {
+    padding-left: 20px;
+    margin-top: 6px;
+    list-style-type: disc;
+  }
+
+  .message-guidance ul ul {
+    list-style: none;
+    padding-left: 20px;
+  }
+
+  .message-guidance ul ul li {
+    margin-bottom: 4px;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .message-guidance ul ul li::before {
+    content: "* ";
+    color: var(--accent);
+  }
+
+  .anon-note {
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--muted);
+    font-style: italic;
   }
 
   /* ── ERROR ── */
@@ -382,7 +443,8 @@
          alt="Warrior Moms">
     <h1>Message Your <span>MLA</span></h1>
     <div class="divider"></div>
-    <p>Select your constituency and write a message to your elected representative about air pollution. We will collect these messages and deliver them directly to each MLA.</p>
+    <p class="mla-role">Your MLA represents your constituency in the Delhi Legislative Assembly and is responsible for raising local issues, ensuring action by government agencies, and supporting policies that improve air quality.</p>
+    <p style="margin-top: 18px; text-align: left;">Select your constituency and write a message to your MLA about air pollution. We will collect these messages and deliver them directly to each MLA.</p>
   </div>
 
   <div class="success-banner" id="successBanner">
@@ -420,14 +482,27 @@
     </div>
 
     <div class="message-card">
+      <div class="message-guidance">
+        <p>Use the space below to share:</p>
+        <ul>
+          <li>Problems you see in your area (e.g., garbage burning, construction dust, traffic pollution)</li>
+          <li>How it affects you or your family (health, daily life, children, elderly)</li>
+          <li>What you expect your MLA to do, such as:
+            <ul>
+              <li>Raise the issue in the Assembly</li>
+              <li>Ensure action by agencies like Delhi Pollution Control Committee and Municipal Corporation of Delhi</li>
+              <li>Improve local infrastructure (roads, waste management, green cover)</li>
+              <li>Strengthen enforcement of pollution rules</li>
+            </ul>
+          </li>
+        </ul>
+        <p class="anon-note">You can include your name or make your message anonymous.</p>
+      </div>
       <label class="message-label" for="messageText">
-        If you would like to, please use the space below to write a message to your MLA on the topic of air pollution. We will collect these messages and deliver them to each MLA.
-        <br><br>
-        For example, you could write about how pollution affects you or whether you would like certain policies to be implemented. Your message could be fully anonymous or you could choose to include your name.
-        <span class="optional-badge">Optional</span>
+        Write your message to your MLA
       </label>
       <textarea id="messageText" placeholder="Write your message here…"></textarea>
-      <p class="hint">Leave blank if you prefer not to write a message.</p>
+      <p class="hint">Leave blank if you prefer not to write a message. Your message can be fully anonymous or you can choose to include your name.</p>
     </div>
 
     <div class="submit-row">
